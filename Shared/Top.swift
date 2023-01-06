@@ -8,8 +8,6 @@ import SwiftUIRouter
 
 @main
 struct Top: App {
-	@StateObject private var usersData = UsersData()
-	
     var body: some Scene {
         WindowGroup {
 			/// (1) This is the first and perhaps the most important step when using SwiftUI Router.

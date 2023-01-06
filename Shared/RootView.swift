@@ -5,6 +5,10 @@
 
 import SwiftUI
 import SwiftUIRouter
+final class UserClass: ObservableObject{
+    var username = UserDefaults.standard.string(forKey: "username")
+    var password = UserDefaults.standard.string(forKey: "password")
+}
 
 struct RootView: View {
 	@EnvironmentObject private var navigator: Navigator
@@ -45,13 +49,13 @@ struct RootView: View {
 		.help("Go to parent")
 	}
 }
-struct AppPreview: PreviewProvider {
-    static var previews: some View{
-        Router{
-            RootView()
-        }
-    }
-}
+//struct AppPreview: PreviewProvider {
+//    static var previews: some View{
+//        Router{
+//            RootView()
+//        }
+//    }
+//}
 // MARK: - Routes
 /// (3) The only purpose of this view is to determine what to render depending on the path.
 /// By using a simple view like this we can better separate our routing logic without obfuscating it with unrelated
@@ -60,6 +64,7 @@ struct AppPreview: PreviewProvider {
 struct RootRoutes: View {
 	var body: some View {
 		SwitchRoutes {
+            Route("home", content: HomeScreen())
 			Route("signUp", content: SignUpScreen())
             Route("login/*", content: LoginScreen(username: "", password: ""))
 			Route {
