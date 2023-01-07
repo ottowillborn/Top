@@ -62,9 +62,12 @@ struct HomeScreen: View {
             }
             Button(action: {downloadPhoto()}) {
                 Text("download image")
+            }.padding(.bottom, 30)
+            
+            .safeAreaInset(edge: .bottom){
+                NavigationBar()
             }
         }
-        .navigationTransition()
         
     }
     func uploadPhoto(){

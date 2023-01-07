@@ -27,6 +27,8 @@ struct Colors {
     let blue1 = Color(#colorLiteral(red: 0.3034266829, green: 0.5427354574, blue: 1, alpha: 1))
     let lightGray = Color(#colorLiteral(red: 0.8124992251, green: 0.8971869349, blue: 0.8967813849, alpha: 1))
     let darkGray = Color(#colorLiteral(red: 0.624907136, green: 0.600016892, blue: 0.6044846773, alpha: 1))
+    let black = Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
+    let white = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
     let orange = Color(#colorLiteral(red: 0.9417511225, green: 0.6201518178, blue: 0.2676982284, alpha: 1))
     let redError = Color(#colorLiteral(red: 0.853534162, green: 0, blue: 0, alpha: 1))
 }

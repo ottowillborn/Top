@@ -46,10 +46,12 @@ struct RootRoutes: View {
 			Route("signUp", content: SignUpScreen())
             Route("forgotPassword", content: ForgotPasswordScreen())
             Route(user.mainRoute!+"/*", content: LoginScreen(email: "", password: ""))
+            
+            Route("leaderboard", content: LeaderboardScreen())
+            
 			Route {
                 Navigate(to: "/"+user.mainRoute!, replace: true)
 			}
 		}
-		.navigationTransition()
 	}
 }
