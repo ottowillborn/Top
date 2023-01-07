@@ -38,7 +38,11 @@ struct RootRoutes: View {
 	var body: some View {
         // Router for app navigation
 		SwitchRoutes {
-            Route("home", content: HomeScreen())
+            if #available(iOS 16.0, *) {
+                Route("home", content: HomeScreen())
+            } else {
+                // Fallback on earlier versions
+            }
 			Route("signUp", content: SignUpScreen())
             Route("forgotPassword", content: ForgotPasswordScreen())
             Route(user.mainRoute!+"/*", content: LoginScreen(email: "", password: ""))

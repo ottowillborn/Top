@@ -7,6 +7,9 @@ import SwiftUI
 import SwiftUIRouter
 import Firebase
 import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
 
 // User class holds values that will be preserved when app is closed.
 final class UserClass: ObservableObject{
@@ -25,7 +28,6 @@ struct Top: App {
 			Router {
 				RootView()
 			}
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }

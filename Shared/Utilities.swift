@@ -30,3 +30,18 @@ struct Colors {
     let orange = Color(#colorLiteral(red: 0.9417511225, green: 0.6201518178, blue: 0.2676982284, alpha: 1))
     let redError = Color(#colorLiteral(red: 0.853534162, green: 0, blue: 0, alpha: 1))
 }
+
+extension UIImage {
+    var base64: String? {
+        self.jpegData(compressionQuality: 0.47)?.base64EncodedString()
+    }
+}
+
+extension String {
+    var imageFromBase64: UIImage? {
+        guard let imageData = Data(base64Encoded: self, options: .ignoreUnknownCharacters) else {
+            return nil
+        }
+        return UIImage(data: imageData)
+    }
+}
