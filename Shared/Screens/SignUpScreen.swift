@@ -6,21 +6,18 @@
 import Foundation
 import SwiftUI
 import SwiftUIRouter
+import FirebaseAuth
 
-/// (18) This screen was added to demonstrate how easy it is to navigate to another parth of the app, as well as the
-/// results of navigating to a path that doesn't exist, or isn't valid
+// Screen to register a new user using FirebaseAuth
 struct SignUpScreen: View {
     @EnvironmentObject private var routeInformation: RouteInformation
     @EnvironmentObject private var navigator: Navigator
-    @State private var username = ""
+    @State private var email = ""
     @State private var password = ""
     @State private var passwordConfirm = ""
-    @State private var showLoginError = false
-    @State private var showPasswordError = false
+    @State private var showLoginError = ""
 
-    let lightGray = Color(#colorLiteral(red: 0.8124992251, green: 0.8971869349, blue: 0.8967813849, alpha: 1))
-    let orange = Color(#colorLiteral(red: 0.9417511225, green: 0.6201518178, blue: 0.2676982284, alpha: 1))
-    let redError = Color(#colorLiteral(red: 0.853534162, green: 0, blue: 0, alpha: 1))
+    let colors = Colors()
     
     var body: some View {
         SwitchRoutes {
@@ -28,55 +25,60 @@ struct SignUpScreen: View {
                 .font(.largeTitle)
                 .padding(.bottom, 20)
             VStack(spacing: 15){
-                TextField("Username", text: $username )
+                TextField("Email", text: $email )
                     .padding(15)
-                    .background(lightGray)
+                    .background(colors.lightGray)
                     .cornerRadius(10)
                 SecureField("Password", text: $password )
                     .padding(15)
-                    .background(lightGray)
+                    .background(colors.lightGray)
                     .cornerRadius(10)
                 SecureField("Confirm Password", text: $passwordConfirm )
                     .padding(15)
-                    .background(lightGray)
+                    .background(colors.lightGray)
                     .cornerRadius(10)
-                if showLoginError {
-                    Text("Invalid username or password")
-                        .foregroundColor(redError)
-                }
-                if showPasswordError {
-                    Text("Passwords must match")
-                        .foregroundColor(redError)
-                }
-                Button(action: {
-                    if username.isEmpty || password.isEmpty {
-                        password = ""
-                        username = ""
-                        passwordConfirm = ""
-                        showLoginError = true
-                        showPasswordError = false
-                        return
-                    }else if password != passwordConfirm {
-                        passwordConfirm = ""
-                        showPasswordError = true
-                    }else{
-                        showLoginError = false
-                        UserDefaults.standard.set(username, forKey: "username")
-                        UserDefaults.standard.set(password, forKey: "password")
-                        navigator.navigate("..")
-                    }
-                    }){
+                    Text(showLoginError)
+                        .foregroundColor(colors.redError)
+                Button(action: { register() }){
                     Text("Submit")
                 }
                 .padding(15)
-                .background(orange)
+                .background(colors.orange)
                 .cornerRadius(10)
                 .foregroundColor(Color.black)
+                Button(action: { navigator.navigate("..") }) {
+                    Text("Back")
+                }
+                .padding(30)
             }
             .padding([.trailing, .leading], 25)
             .padding(.top, 30)
             .padding(.bottom, 10)
         }
         .navigationTransition()
+    }
+    
+    // Validate and submit new account registration
+    func register(){
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if error != nil {
+                email = ""
+                password = ""
+                passwordConfirm = ""
+                showLoginError = error!.localizedDescription
+                print(error!.localizedDescription)
+            }else{
+                if password != passwordConfirm {
+                    password = ""
+                    passwordConfirm = ""
+                    showLoginError = "Passwords must match"
+                }else{
+                    showLoginError = ""
+                    // Because new user is "signed in"
+                    signOut()
+                    navigator.navigate("/login")
+                }
+            }
+        }
     }
 }

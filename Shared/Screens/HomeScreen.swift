@@ -8,32 +8,31 @@
 import Foundation
 import SwiftUI
 import SwiftUIRouter
+import FirebaseAuth
 
-/// (18) This screen was added to demonstrate how easy it is to navigate to another parth of the app, as well as the
-/// results of navigating to a path that doesn't exist, or isn't valid
+// Main screen for app when logged in
 struct HomeScreen: View {
-    @EnvironmentObject private var usersData: UsersData
     @EnvironmentObject private var navigator: Navigator
-    
-    @StateObject var user = UserClass()
         
     var body: some View {
         SwitchRoutes{
             Text("HOME")
                 .font(.title)
                 .padding(30)
-            Text(UserDefaults.standard.string(forKey: "username")!)
+            Text(Auth.auth().currentUser?.uid ?? "")
                 .font(.title)
                 .padding(30)
-            Text(UserDefaults.standard.string(forKey: "password")!)
+            Text(Auth.auth().currentUser?.description ?? "")
                 .font(.title)
                 .padding(30)
-            Button(action: { navigator.navigate("..") }) {
-                Text("Back")
+            Button(action: {
+                navigator.navigate("/login")
+                signOut()
+                }) {
+                Text("Sign Out")
             }
         }
-        .environmentObject(user)
         .navigationTransition()
     }
-    
 }
+
