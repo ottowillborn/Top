@@ -13,11 +13,15 @@ import SwiftUIRouter
 
 // Sign user out in Firebase and set default route to login
 func signOut(){
-    UserDefaults.standard.set("login", forKey: "mainRoute")
     do {
         try Auth.auth().signOut()
     } catch let signOutError as NSError {
         print("Error signing out: %@", signOutError)
+    }
+    if Auth.auth().currentUser != nil {
+        UserDefaults.standard.set("home", forKey: "mainRoute")
+    } else {
+        UserDefaults.standard.set("login", forKey: "mainRoute")
     }
 }
 

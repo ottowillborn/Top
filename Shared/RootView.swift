@@ -45,7 +45,7 @@ struct RootRoutes: View {
             }
 			Route("signUp", content: SignUpScreen())
             Route("forgotPassword", content: ForgotPasswordScreen())
-            Route(user.mainRoute!+"/*", content: LoginScreen(email: "", password: ""))
+            Route("login", content: LoginScreen(email: "", password: ""))
             
             Route("leaderboard", content: LeaderboardScreen())
             Route("profile", content: ProfileScreen())

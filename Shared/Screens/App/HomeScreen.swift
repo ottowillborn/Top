@@ -58,8 +58,8 @@ struct HomeScreen: View {
                     Text("download image")
                 }.padding(.bottom, 10)
                 Button(action: {
-                    navigator.navigate("/login")
                     signOut()
+                    navigator.navigate("/login")
                 }) {
                     Text("Sign Out")
                 }
