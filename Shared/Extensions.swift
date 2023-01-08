@@ -6,7 +6,11 @@
 import Foundation
 import SwiftUI
 import SwiftUIRouter
+import FirebaseAuth
+import PhotosUI
+import Firebase
 
+let db = Firestore.firestore()
 // MARK: - Navigation transition view modifier
 extension View {
 	func navigationTransition() -> some View {

@@ -27,6 +27,11 @@
 		DD9FE5F62969F81500F06F07 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5F52969F81500F06F07 /* NavigationBar.swift */; };
 		DD9FE5F72969F81500F06F07 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5F52969F81500F06F07 /* NavigationBar.swift */; };
 		DD9FE5F92969FF8A00F06F07 /* LeaderboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5F82969FF8A00F06F07 /* LeaderboardScreen.swift */; };
+		DD9FE5FD296A177900F06F07 /* MessagesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5FC296A177900F06F07 /* MessagesScreen.swift */; };
+		DD9FE5FF296A179E00F06F07 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5FE296A179E00F06F07 /* ProfileScreen.swift */; };
+		DD9FE601296A17D600F06F07 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE600296A17D600F06F07 /* SettingsScreen.swift */; };
+		DD9FE603296A5C3900F06F07 /* APICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE602296A5C3900F06F07 /* APICalls.swift */; };
+		DD9FE605296A8B3800F06F07 /* AuthCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE604296A8B3800F06F07 /* AuthCalls.swift */; };
 		DDF2E2C42967D36100B0DE45 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2E2C32967D36100B0DE45 /* HomeScreen.swift */; };
 		DDF2E2C52967D36100B0DE45 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2E2C32967D36100B0DE45 /* HomeScreen.swift */; };
 		DDF2E2CF2969053700B0DE45 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DDF2E2CE2969053700B0DE45 /* FirebaseAuth */; };
@@ -49,6 +54,11 @@
 		C0316BB12752690900BBE3D9 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		DD9FE5F52969F81500F06F07 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		DD9FE5F82969FF8A00F06F07 /* LeaderboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardScreen.swift; sourceTree = "<group>"; };
+		DD9FE5FC296A177900F06F07 /* MessagesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesScreen.swift; sourceTree = "<group>"; };
+		DD9FE5FE296A179E00F06F07 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		DD9FE600296A17D600F06F07 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		DD9FE602296A5C3900F06F07 /* APICalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICalls.swift; sourceTree = "<group>"; };
+		DD9FE604296A8B3800F06F07 /* AuthCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCalls.swift; sourceTree = "<group>"; };
 		DDF2E2C32967D36100B0DE45 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		DDF2E2D22969063D00B0DE45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDF2E2D429691E8000B0DE45 /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
@@ -97,6 +107,8 @@
 				C0316B55275243CC00BBE3D9 /* RootView.swift */,
 				C0316BA527525F3800BBE3D9 /* Extensions.swift */,
 				DDF2E2D72969317600B0DE45 /* Utilities.swift */,
+				DD9FE602296A5C3900F06F07 /* APICalls.swift */,
+				DD9FE604296A8B3800F06F07 /* AuthCalls.swift */,
 				C0316BA12752491000BBE3D9 /* Screens */,
 				C0316B9A2752450B00BBE3D9 /* Data */,
 				C0316B902752444800BBE3D9 /* Resources */,
@@ -169,6 +181,9 @@
 				DDF2E2C32967D36100B0DE45 /* HomeScreen.swift */,
 				DD9FE5F52969F81500F06F07 /* NavigationBar.swift */,
 				DD9FE5F82969FF8A00F06F07 /* LeaderboardScreen.swift */,
+				DD9FE5FC296A177900F06F07 /* MessagesScreen.swift */,
+				DD9FE5FE296A179E00F06F07 /* ProfileScreen.swift */,
+				DD9FE600296A17D600F06F07 /* SettingsScreen.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -287,13 +302,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0316B7E275243CF00BBE3D9 /* RootView.swift in Sources */,
+				DD9FE605296A8B3800F06F07 /* AuthCalls.swift in Sources */,
 				DD9FE5F92969FF8A00F06F07 /* LeaderboardScreen.swift in Sources */,
 				DDF2E2D529691E8000B0DE45 /* ForgotPasswordScreen.swift in Sources */,
 				C0316BA627525F3800BBE3D9 /* Extensions.swift in Sources */,
 				C0316BA32752491E00BBE3D9 /* LoginScreen.swift in Sources */,
 				DDF2E2C42967D36100B0DE45 /* HomeScreen.swift in Sources */,
 				DD9FE5F62969F81500F06F07 /* NavigationBar.swift in Sources */,
+				DD9FE601296A17D600F06F07 /* SettingsScreen.swift in Sources */,
+				DD9FE603296A5C3900F06F07 /* APICalls.swift in Sources */,
+				DD9FE5FF296A179E00F06F07 /* ProfileScreen.swift in Sources */,
 				C0316B7C275243CF00BBE3D9 /* Top.swift in Sources */,
+				DD9FE5FD296A177900F06F07 /* MessagesScreen.swift in Sources */,
 				DDF2E2D82969317600B0DE45 /* Utilities.swift in Sources */,
 				C0316BB22752690900BBE3D9 /* SignUpScreen.swift in Sources */,
 			);
@@ -438,7 +458,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Top (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QSR4FL5D2K;
+				DEVELOPMENT_TEAM = 8HDXLZNCY5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -473,7 +493,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Top (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QSR4FL5D2K;
+				DEVELOPMENT_TEAM = 8HDXLZNCY5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

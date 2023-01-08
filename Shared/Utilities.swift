@@ -35,7 +35,7 @@ struct Colors {
 
 extension UIImage {
     var base64: String? {
-        self.jpegData(compressionQuality: 0.47)?.base64EncodedString()
+        self.jpegData(compressionQuality: 0.3)?.base64EncodedString()
     }
 }
 

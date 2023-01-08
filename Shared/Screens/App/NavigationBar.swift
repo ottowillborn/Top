@@ -27,7 +27,7 @@ struct NavigationBar: View {
                 .padding()
                 .background(colors.black)
                 .foregroundColor(colors.white)
-                Button(action: {}) {
+                Button(action: {navigator.navigate("/messages")}) {
                     Text("M")
                         .frame(maxWidth: .infinity)
                 }
@@ -41,14 +41,14 @@ struct NavigationBar: View {
                 .padding()
                 .background(colors.black)
                 .foregroundColor(colors.white)
-                Button(action: {}) {
+                Button(action: {navigator.navigate("/settings")}) {
                     Text("S")
                         .frame(maxWidth: .infinity)
                 }
                 .padding()
                 .background(colors.black)
                 .foregroundColor(colors.white)
-                Button(action: {}) {
+                Button(action: {navigator.navigate("/profile")}) {
                     Text("P")
                         .frame(maxWidth: .infinity)
                 }

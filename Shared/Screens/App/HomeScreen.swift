@@ -20,50 +20,51 @@ struct HomeScreen: View {
     @State private var selectedPhotoData: Data? = nil
     @State private var displayImage: UIImage? = nil
     let db = Firestore.firestore()
+    let colors = Colors()
     
     var body: some View {
         SwitchRoutes{
-            Text("HOME")
+            Text("Home")
                 .font(.title)
-                .padding(30)
-            Text(Auth.auth().currentUser?.uid ?? "")
-                .font(.title)
-                .padding(30)
-            Text(Auth.auth().currentUser?.description ?? "")
-                .font(.title)
-                .padding(30)
+                .padding(10)
+            
             VStack{
+                Text(Auth.auth().currentUser?.email ?? "")
+                    .font(.title)
+                    .padding(30)
                 if displayImage != nil {
                     Image(uiImage: displayImage!)
                         .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 300, height: 500, alignment: .topLeading)
+                        .border(colors.orange)
                 }
-            }
-            .frame(maxWidth: 200, maxHeight: 200)
-            PhotosPicker(
-                selection: $selectedItem,
-                matching: .images,
-                photoLibrary: .shared()) {
-                    Text("Select a photo")
-                }.onChange(of: selectedItem) { newItem in
-                    Task {
-                        if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                            selectedPhotoData = data
+                PhotosPicker(
+                    selection: $selectedItem,
+                    matching: .images,
+                    photoLibrary: .shared()) {
+                        Text("Select a photo")
+                    }.onChange(of: selectedItem) { newItem in
+                        Task {
+                            if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                                selectedPhotoData = data
+                            }
                         }
                     }
+                Button(action: {uploadPhoto()}) {
+                    Text("upload image")
                 }
-            Button(action: {
-                navigator.navigate("/login")
-                signOut()
-            }) {
-                Text("Sign Out")
+                Button(action: {downloadPhoto()}) {
+                    Text("download image")
+                }.padding(.bottom, 10)
+                Button(action: {
+                    navigator.navigate("/login")
+                    signOut()
+                }) {
+                    Text("Sign Out")
+                }
             }
-            Button(action: {uploadPhoto()}) {
-                Text("upload image")
-            }
-            Button(action: {downloadPhoto()}) {
-                Text("download image")
-            }.padding(.bottom, 30)
-            
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .safeAreaInset(edge: .bottom){
                 NavigationBar()
             }
@@ -80,7 +81,6 @@ struct HomeScreen: View {
             //let rebornImg = base64?.imageFromBase64
             db.collection("users").document(email!).setData([
                 "first": "unam",
-                "DOB": 1815,
                 "img1": base64!
             ]) { err in
                 if let err = err {

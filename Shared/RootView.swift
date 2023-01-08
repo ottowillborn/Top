@@ -48,6 +48,9 @@ struct RootRoutes: View {
             Route(user.mainRoute!+"/*", content: LoginScreen(email: "", password: ""))
             
             Route("leaderboard", content: LeaderboardScreen())
+            Route("profile", content: ProfileScreen())
+            Route("messages", content: MessagesScreen())
+            Route("settings", content: SettingsScreen())
             
 			Route {
                 Navigate(to: "/"+user.mainRoute!, replace: true)

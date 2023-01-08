@@ -7,6 +7,8 @@ import Foundation
 import SwiftUI
 import SwiftUIRouter
 import FirebaseAuth
+import PhotosUI
+import Firebase
 
 // Screen to register a new user using FirebaseAuth
 struct SignUpScreen: View {
@@ -16,8 +18,11 @@ struct SignUpScreen: View {
     @State private var password = ""
     @State private var passwordConfirm = ""
     @State private var showLoginError = ""
+    @State private var showPasswordError = ""
 
     let colors = Colors()
+    let user = UserClass()
+    let authCalls = AuthCalls()
     
     var body: some View {
         SwitchRoutes {
@@ -39,7 +44,11 @@ struct SignUpScreen: View {
                     .cornerRadius(10)
                     Text(showLoginError)
                         .foregroundColor(colors.redError)
-                Button(action: { register() }){
+                    Text(showPasswordError)
+                        .foregroundColor(colors.redError)
+                Button(action: {
+                    register()
+                }){
                     Text("Submit")
                 }
                 .padding(15)
@@ -60,25 +69,22 @@ struct SignUpScreen: View {
     
     // Validate and submit new account registration
     func register(){
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if error != nil {
-                email = ""
-                password = ""
-                passwordConfirm = ""
+        if password != passwordConfirm {
+            password = ""
+            passwordConfirm = ""
+            showPasswordError = "Passwords must match"
+        }
+        Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
+            if let user = authResult?.user {
+                print(user)
+                APICalls.initUser(email: email)
+                showLoginError = ""
+                navigator.navigate("/login)")
+            } else {
                 showLoginError = error!.localizedDescription
-                print(error!.localizedDescription)
-            }else{
-                if password != passwordConfirm {
-                    password = ""
-                    passwordConfirm = ""
-                    showLoginError = "Passwords must match"
-                }else{
-                    showLoginError = ""
-                    // Because new user is "signed in"
-                    signOut()
-                    navigator.navigate("/login")
-                }
             }
         }
     }
 }
+
+
