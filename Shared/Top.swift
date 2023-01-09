@@ -22,6 +22,7 @@ struct Top: App {
         FirebaseApp.configure()
     }
     let colors = Colors()
+    let colors2 = Colors()
     
     var body: some Scene {
         WindowGroup {
