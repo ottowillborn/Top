@@ -30,6 +30,9 @@ struct ProfileScreen: View {
                     .padding(15)
                     .background(colors.lightGray)
                     .cornerRadius(10)
+                Button(action: {APICalls.updateName(name: name)}) {
+                    Text("upload")
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .safeAreaInset(edge: .bottom){

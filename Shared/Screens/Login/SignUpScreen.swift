@@ -77,9 +77,9 @@ struct SignUpScreen: View {
         Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
             if let user = authResult?.user {
                 print(user)
-                APICalls.initUser(email: email)
+                APICalls.initUser(email: user.email!)
                 showLoginError = ""
-                navigator.navigate("/login)")
+                navigator.navigate("/login")
             } else {
                 showLoginError = error!.localizedDescription
             }
