@@ -79,7 +79,7 @@ struct SignUpScreen: View {
                 print(user)
                 APICalls.initUser(email: user.email!)
                 showLoginError = ""
-                navigator.navigate("/login")
+                navigator.navigate("/nameScreen")
             } else {
                 showLoginError = error!.localizedDescription
             }

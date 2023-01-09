@@ -21,35 +21,35 @@ struct NavigationBar: View {
         SwitchRoutes{
             HStack(spacing: -10){
                 Button(action: {navigator.navigate("/leaderboard")}) {
-                    Text("L")
+                    Text(Image(systemName: "stairs"))
                         .frame(maxWidth: .infinity)
                 }
                 .padding()
                 .background(colors.black)
                 .foregroundColor(colors.white)
                 Button(action: {navigator.navigate("/messages")}) {
-                    Text("M")
+                    Text(Image(systemName: "bubble.right"))
                         .frame(maxWidth: .infinity)
                 }
                 .padding()
                 .background(colors.black)
                 .foregroundColor(colors.white)
                 Button(action: {navigator.navigate("/home")}) {
-                    Text("T")
+                    Text(Image(systemName: "house.circle"))
                         .frame(maxWidth: .infinity)
                 }
                 .padding()
                 .background(colors.black)
                 .foregroundColor(colors.white)
                 Button(action: {navigator.navigate("/settings")}) {
-                    Text("S")
+                    Text(Image(systemName: "gearshape"))
                         .frame(maxWidth: .infinity)
                 }
                 .padding()
                 .background(colors.black)
                 .foregroundColor(colors.white)
                 Button(action: {navigator.navigate("/profile")}) {
-                    Text("P")
+                    Text(Image(systemName: "person.crop.circle"))
                         .frame(maxWidth: .infinity)
                 }
                 .padding()

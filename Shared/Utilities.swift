@@ -35,6 +35,7 @@ struct Colors {
     let white = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
     let orange = Color(#colorLiteral(red: 0.9417511225, green: 0.6201518178, blue: 0.2676982284, alpha: 1))
     let redError = Color(#colorLiteral(red: 0.853534162, green: 0, blue: 0, alpha: 1))
+    let beige = Color(#colorLiteral(red: 1, green: 0.9718518853, blue: 0.761467278, alpha: 1))
 }
 
 extension UIImage {

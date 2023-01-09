@@ -13,6 +13,11 @@ import PhotosUI
 import Firebase
 
 // Main screen for app when logged in
+class Profile {
+    var name = ""
+    var bio = ""
+    var dob = ""
+}
 @available(iOS 16.0, *)
 struct HomeScreen: View {
     @EnvironmentObject private var navigator: Navigator
