@@ -44,8 +44,9 @@ struct SignUpScreen: View {
                         .foregroundColor(colors.redError)
                     Text(showPasswordError)
                         .foregroundColor(colors.redError)
+                //add isactive
                 NavigationLink(destination: NameScreen(), isActive: $isActive) {
-                    ZStack{
+                    VStack{
                             Button(action: {
                                 if password != passwordConfirm {
                                     password = ""

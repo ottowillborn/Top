@@ -41,7 +41,7 @@ struct LoginScreen: View {
                         .foregroundColor(colors.redError)
                     if #available(iOS 16.0, *) {
                         NavigationLink(destination: HomeScreen(), isActive: $isActive) {
-                            ZStack{
+                            VStack{
                                 Button(action: {
                                     signIn(email: email, password: password, completion: { error in
                                         if error?.localizedDescription != nil {

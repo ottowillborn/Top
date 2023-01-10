@@ -10,6 +10,8 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 import SwiftUIRouter
+import CoreLocation
+import CoreLocationUI
 
 // Sign user out in Firebase and set default route to login
 func signOut(){
@@ -52,3 +54,4 @@ extension String {
         return UIImage(data: imageData)
     }
 }
+

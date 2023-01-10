@@ -20,6 +20,8 @@ final class UserClass: ObservableObject{
 struct Top: App {
     init(){
         FirebaseApp.configure()
+        UserDefaults.standard.set("", forKey: "name")
+        UserDefaults.standard.set(Date(), forKey: "birthDate")
         // On app load: if user is logged in, set home page as main route, else set login page as main route.
         if Auth.auth().currentUser != nil {
             UserDefaults.standard.set(true, forKey: "loggedIn")

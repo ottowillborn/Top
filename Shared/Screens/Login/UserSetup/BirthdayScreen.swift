@@ -24,17 +24,30 @@ struct BirthDayScreen: View {
                 Text("Birthday bum")
                     .font(.title)
                     .padding(30)
-                ZStack{
-                    Form {
-                        DatePicker("When is your birthday?", selection: $selectedDate, displayedComponents: .date)
+                VStack{
+                        Text("Enter your birthday")
+                    DatePicker("", selection: $selectedDate, displayedComponents: .date).onAppear(){
+                        self.selectedDate = UserDefaults.standard.object(forKey: "birthDate") as! Date
+                    }
+                            .datePickerStyle(.wheel)
+                    
+                    if !validateDate() {
+                        Text("You must be 18+ to use Top")
+                            .foregroundColor(colors.redError)
                     }
                 }
                 HStack(spacing: 20){
+                    //store on back as well
                     NavigationLink(destination: NameScreen()) {
                         Text("Back")
                     }
-                    NavigationLink(destination: LocationScreen()) {
-                        Text("Next")
+                    if validateDate(){
+                        NavigationLink(destination: LocationScreen().onAppear(){
+                            print(validateDate())
+                            UserDefaults.standard.set(selectedDate, forKey: "birthDate")
+                        }) {
+                            Text("Next")
+                        }
                     }
                 }
             }
@@ -42,5 +55,10 @@ struct BirthDayScreen: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .navigationBarHidden(true)
+    }
+    func validateDate() -> Bool {
+        let now = Date()
+        let diffs = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate, to: now)
+        return diffs.year! >= 18 
     }
 }

@@ -14,6 +14,7 @@ import Firebase
 
 // Name screen
 struct NameScreen: View {
+    // Preserve name
     @State private var name = ""
     
     let colors = Colors()
@@ -21,18 +22,29 @@ struct NameScreen: View {
     var body: some View {
         NavigationView{
             VStack(spacing: 15){
+                
                 Text("Who the fuck are you")
                     .font(.title)
                     .padding(30)
-                TextField("Name", text: $name )
+                
+                TextField("Name", text: $name ).onAppear(){
+                    self.name = UserDefaults.standard.string(forKey: "name")!
+                }
                     .padding(15)
                     .background(colors.lightGray)
                     .cornerRadius(10)
-                HStack(spacing: 20){
-                    NavigationLink(destination: BirthDayScreen()) {
-                        Text("Next")
+                
+                VStack{
+                    if !name.isEmpty{
+                        NavigationLink(destination: BirthDayScreen().onAppear {
+                            UserDefaults.standard.set(name, forKey: "name")
+                        }) {
+                            Text("Next")
+                        }
                     }
                 }
+                .frame(width: 40, height: 20)
+                
             }
             .padding(25)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -40,3 +52,4 @@ struct NameScreen: View {
         .navigationBarHidden(true)
     }
 }
+
