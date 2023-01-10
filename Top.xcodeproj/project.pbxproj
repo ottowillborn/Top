@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		C0316B7C275243CF00BBE3D9 /* Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0316B54275243CC00BBE3D9 /* Top.swift */; };
 		C0316B7D275243CF00BBE3D9 /* Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0316B54275243CC00BBE3D9 /* Top.swift */; };
-		C0316B7E275243CF00BBE3D9 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0316B55275243CC00BBE3D9 /* RootView.swift */; };
-		C0316B7F275243CF00BBE3D9 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0316B55275243CC00BBE3D9 /* RootView.swift */; };
 		C0316B80275243CF00BBE3D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0316B56275243CE00BBE3D9 /* Assets.xcassets */; };
 		C0316B81275243CF00BBE3D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0316B56275243CE00BBE3D9 /* Assets.xcassets */; };
 		C0316B922752444800BBE3D9 /* randomusers.json in Resources */ = {isa = PBXBuildFile; fileRef = C0316B912752444800BBE3D9 /* randomusers.json */; };
@@ -31,13 +29,13 @@
 		DD9FE5FF296A179E00F06F07 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5FE296A179E00F06F07 /* ProfileScreen.swift */; };
 		DD9FE601296A17D600F06F07 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE600296A17D600F06F07 /* SettingsScreen.swift */; };
 		DD9FE603296A5C3900F06F07 /* APICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE602296A5C3900F06F07 /* APICalls.swift */; };
-		DD9FE605296A8B3800F06F07 /* AuthCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE604296A8B3800F06F07 /* AuthCalls.swift */; };
 		DD9FE607296BD28400F06F07 /* spinning top inverted.png in Resources */ = {isa = PBXBuildFile; fileRef = DD9FE606296BD28400F06F07 /* spinning top inverted.png */; };
 		DD9FE60C296BE4E600F06F07 /* NameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE60B296BE4E600F06F07 /* NameScreen.swift */; };
 		DD9FE60E296BE4FC00F06F07 /* BirthdayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE60D296BE4FC00F06F07 /* BirthdayScreen.swift */; };
 		DD9FE610296BE51500F06F07 /* BioScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE60F296BE51500F06F07 /* BioScreen.swift */; };
 		DD9FE612296BE52800F06F07 /* LocationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE611296BE52800F06F07 /* LocationScreen.swift */; };
 		DD9FE614296BE53A00F06F07 /* PhotosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE613296BE53A00F06F07 /* PhotosScreen.swift */; };
+		DD9FE616296CEE7100F06F07 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE615296CEE7100F06F07 /* ContentView.swift */; };
 		DDF2E2C42967D36100B0DE45 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2E2C32967D36100B0DE45 /* HomeScreen.swift */; };
 		DDF2E2C52967D36100B0DE45 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2E2C32967D36100B0DE45 /* HomeScreen.swift */; };
 		DDF2E2CF2969053700B0DE45 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DDF2E2CE2969053700B0DE45 /* FirebaseAuth */; };
@@ -49,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		C0316B54275243CC00BBE3D9 /* Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top.swift; sourceTree = "<group>"; };
-		C0316B55275243CC00BBE3D9 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		C0316B56275243CE00BBE3D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0316B5B275243CE00BBE3D9 /* Top.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Top.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0316B61275243CE00BBE3D9 /* Top.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Top.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,13 +61,13 @@
 		DD9FE5FE296A179E00F06F07 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		DD9FE600296A17D600F06F07 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		DD9FE602296A5C3900F06F07 /* APICalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICalls.swift; sourceTree = "<group>"; };
-		DD9FE604296A8B3800F06F07 /* AuthCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCalls.swift; sourceTree = "<group>"; };
 		DD9FE606296BD28400F06F07 /* spinning top inverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spinning top inverted.png"; sourceTree = "<group>"; };
 		DD9FE60B296BE4E600F06F07 /* NameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameScreen.swift; sourceTree = "<group>"; };
 		DD9FE60D296BE4FC00F06F07 /* BirthdayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayScreen.swift; sourceTree = "<group>"; };
 		DD9FE60F296BE51500F06F07 /* BioScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioScreen.swift; sourceTree = "<group>"; };
 		DD9FE611296BE52800F06F07 /* LocationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationScreen.swift; sourceTree = "<group>"; };
 		DD9FE613296BE53A00F06F07 /* PhotosScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosScreen.swift; sourceTree = "<group>"; };
+		DD9FE615296CEE7100F06F07 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DDF2E2C32967D36100B0DE45 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		DDF2E2D22969063D00B0DE45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDF2E2D429691E8000B0DE45 /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
@@ -116,11 +113,10 @@
 			children = (
 				DDF2E2D22969063D00B0DE45 /* GoogleService-Info.plist */,
 				C0316B54275243CC00BBE3D9 /* Top.swift */,
-				C0316B55275243CC00BBE3D9 /* RootView.swift */,
+				DD9FE615296CEE7100F06F07 /* ContentView.swift */,
 				C0316BA527525F3800BBE3D9 /* Extensions.swift */,
 				DDF2E2D72969317600B0DE45 /* Utilities.swift */,
 				DD9FE602296A5C3900F06F07 /* APICalls.swift */,
-				DD9FE604296A8B3800F06F07 /* AuthCalls.swift */,
 				C0316BA12752491000BBE3D9 /* Screens */,
 				C0316B9A2752450B00BBE3D9 /* Data */,
 				C0316B902752444800BBE3D9 /* Resources */,
@@ -330,8 +326,7 @@
 			files = (
 				DD9FE610296BE51500F06F07 /* BioScreen.swift in Sources */,
 				DD9FE614296BE53A00F06F07 /* PhotosScreen.swift in Sources */,
-				C0316B7E275243CF00BBE3D9 /* RootView.swift in Sources */,
-				DD9FE605296A8B3800F06F07 /* AuthCalls.swift in Sources */,
+				DD9FE616296CEE7100F06F07 /* ContentView.swift in Sources */,
 				DD9FE5F92969FF8A00F06F07 /* LeaderboardScreen.swift in Sources */,
 				DD9FE60C296BE4E600F06F07 /* NameScreen.swift in Sources */,
 				DDF2E2D529691E8000B0DE45 /* ForgotPasswordScreen.swift in Sources */,
@@ -355,7 +350,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0316B7F275243CF00BBE3D9 /* RootView.swift in Sources */,
 				DD9FE5F32969F7ED00F06F07 /* ForgotPasswordScreen.swift in Sources */,
 				C0316BA727525F3800BBE3D9 /* Extensions.swift in Sources */,
 				DD9FE5F72969F81500F06F07 /* NavigationBar.swift in Sources */,

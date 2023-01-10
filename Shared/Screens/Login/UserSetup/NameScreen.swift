@@ -14,31 +14,29 @@ import Firebase
 
 // Name screen
 struct NameScreen: View {
-    @EnvironmentObject private var navigator: Navigator
     @State private var name = ""
     
     let colors = Colors()
     
     var body: some View {
-        SwitchRoutes{
-            Text("Who the fuck are you")
-                .font(.title)
-                .padding(30)
-            VStack{
+        NavigationView{
+            VStack(spacing: 15){
+                Text("Who the fuck are you")
+                    .font(.title)
+                    .padding(30)
                 TextField("Name", text: $name )
                     .padding(15)
                     .background(colors.lightGray)
                     .cornerRadius(10)
-                HStack{
-                    Button(action: { navigator.navigate("..") }) {
-                        Text("Back")
-                    }
-                    Button(action: { navigator.navigate("/birthdayScreen") }) {
+                HStack(spacing: 20){
+                    NavigationLink(destination: BirthDayScreen()) {
                         Text("Next")
                     }
                 }
             }
+            .padding(25)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .navigationBarHidden(true)
     }
 }

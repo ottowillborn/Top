@@ -19,9 +19,9 @@ func signOut(){
         print("Error signing out: %@", signOutError)
     }
     if Auth.auth().currentUser != nil {
-        UserDefaults.standard.set("home", forKey: "mainRoute")
+        UserDefaults.standard.set(true, forKey: "loggedIn")
     } else {
-        UserDefaults.standard.set("login", forKey: "mainRoute")
+        UserDefaults.standard.set(false, forKey: "loggedIn")
     }
 }
 

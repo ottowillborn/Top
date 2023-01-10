@@ -14,29 +14,33 @@ import Firebase
 
 //  Birthday screen
 struct BirthDayScreen: View {
-    @EnvironmentObject private var navigator: Navigator
-    @State private var name = ""
-    @State var selectedDate = Date()
+    @State private var selectedDate = Date()
     
     let colors = Colors()
     
     var body: some View {
-        SwitchRoutes{
-            Text("Birthday bum")
-                .font(.title)
-                .padding(30)
+        NavigationView{
             VStack{
-                Form {
-                    DatePicker("When is your birthday?", selection: $selectedDate, displayedComponents: .date)
+                Text("Birthday bum")
+                    .font(.title)
+                    .padding(30)
+                ZStack{
+                    Form {
+                        DatePicker("When is your birthday?", selection: $selectedDate, displayedComponents: .date)
+                    }
                 }
-                Button(action: { navigator.navigate("..") }) {
-                    Text("Back")
-                }
-                Button(action: { navigator.navigate("/locationScreen") }) {
-                    Text("Next")
+                HStack(spacing: 20){
+                    NavigationLink(destination: NameScreen()) {
+                        Text("Back")
+                    }
+                    NavigationLink(destination: LocationScreen()) {
+                        Text("Next")
+                    }
                 }
             }
-            }
+            .padding(25)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .navigationBarHidden(true)
+    }
 }

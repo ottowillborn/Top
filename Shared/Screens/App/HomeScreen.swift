@@ -28,12 +28,11 @@ struct HomeScreen: View {
     let colors = Colors()
     
     var body: some View {
-        SwitchRoutes{
-            Text("Home")
-                .font(.title)
-                .padding(10)
-            
+        NavigationView{
             VStack{
+                Text("Home")
+                    .font(.title)
+                    .padding(10)
                 Text(Auth.auth().currentUser?.email ?? "")
                     .font(.title)
                     .padding(30)
@@ -62,18 +61,23 @@ struct HomeScreen: View {
                 Button(action: {downloadPhoto()}) {
                     Text("download image")
                 }.padding(.bottom, 10)
-                Button(action: {
-                    signOut()
-                    navigator.navigate("/login")
-                }) {
-                    Text("Sign Out")
+                NavigationLink(destination: LoginScreen()) {
+                    ZStack{
+                            Button(action: {
+                                signOut()
+                            }){
+                                Text("Sign Out")
+                            }
+                    }
                 }
+                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .safeAreaInset(edge: .bottom){
                 NavigationBar()
             }
         }
+        .navigationBarHidden(true)
         
     }
     func uploadPhoto(){

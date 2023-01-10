@@ -9,16 +9,15 @@ import SwiftUIRouter
 import FirebaseAuth
 
 struct LoginScreen: View {
-    @EnvironmentObject private var routeInformation: RouteInformation
-    @EnvironmentObject private var navigator: Navigator
-    @State var email: String
-    @State var password: String
-    @State private var showLoginError = false
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var showLoginError = ""
+    @State var isActive: Bool = false
 
     let colors = Colors()
     
     var body: some View {
-        SwitchRoutes {
+        NavigationView {
             ZStack(){
                 Circle()
                     .scale(1.9)
@@ -38,32 +37,38 @@ struct LoginScreen: View {
                         .padding(15)
                         .background(colors.lightGray)
                         .cornerRadius(10)
-                    if showLoginError {
-                        Text("Invalid Login")
-                            .foregroundColor(colors.redError)
+                    Text(showLoginError)
+                        .foregroundColor(colors.redError)
+                    if #available(iOS 16.0, *) {
+                        NavigationLink(destination: HomeScreen(), isActive: $isActive) {
+                            ZStack{
+                                Button(action: {
+                                    signIn(email: email, password: password, completion: { error in
+                                        if error?.localizedDescription != nil {
+                                            showLoginError = error!.localizedDescription
+                                            isActive = false
+                                        }else{
+                                            isActive = true
+                                        }
+                                    })
+                                }){
+                                    Text("Log In")
+                                }
+                                .padding(15)
+                                .background(colors.orange)
+                                .cornerRadius(10)
+                                .foregroundColor(Color.black)
+                            }
+                        }
+                    } else {
+                        // Fallback on earlier versions
                     }
-                    Button(action: {
-                        login()
-                    }){
-                        Text("Log In")
-                    }
-                    .padding(15)
-                    .background(colors.orange)
-                    .cornerRadius(10)
-                    .foregroundColor(Color.black)
+    
                     HStack(spacing: 0){
-                        Text("Don't have an account?")
-                        Button(action: { navigator.navigate("/signUp") }) {
+                        Text("Don't have an account? ")
+                        NavigationLink(destination: SignUpScreen(isActive: false), label: {
                             Text("Sign Up")
-                        }
-                        .padding(10)
-                    }
-                    HStack(spacing: 0){
-                        Text("Forgot Password?")
-                        Button(action: {navigator.navigate("/forgotPassword")}) {
-                            Text("Reset Password")
-                        }
-                        .padding(10)
+                        })
                     }
                 }
             }
@@ -71,16 +76,15 @@ struct LoginScreen: View {
             .padding(.bottom, 40)
             
         }
-        .navigationTransition()
     }
-    func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-                showLoginError = true
-            }else{
-                navigator.navigate("/home")
-                showLoginError = false
+    
+    func signIn(email: String, password: String, completion:@escaping (_ error: Error?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(error) //<-- Here
+        } else {
+            completion(nil)
             }
         }
     }

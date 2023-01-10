@@ -1,6 +1,6 @@
 //
-//  RandomUsers App
-//  Created by Freek (github.com/frzi) 2021
+//  Top App
+//  Created otto 2023
 //
 
 import Foundation
@@ -12,24 +12,22 @@ import Firebase
 
 // Screen to register a new user using FirebaseAuth
 struct SignUpScreen: View {
-    @EnvironmentObject private var routeInformation: RouteInformation
-    @EnvironmentObject private var navigator: Navigator
     @State private var email = ""
     @State private var password = ""
     @State private var passwordConfirm = ""
     @State private var showLoginError = ""
     @State private var showPasswordError = ""
+    @State var isActive: Bool = false
+    
 
     let colors = Colors()
-    let user = UserClass()
-    let authCalls = AuthCalls()
     
     var body: some View {
-        SwitchRoutes {
-            Text("Register")
-                .font(.largeTitle)
-                .padding(.bottom, 20)
+        NavigationView {
             VStack(spacing: 15){
+                Text("Register")
+                    .font(.largeTitle)
+                    .padding(.bottom, 20)
                 TextField("Email", text: $email )
                     .padding(15)
                     .background(colors.lightGray)
@@ -46,42 +44,44 @@ struct SignUpScreen: View {
                         .foregroundColor(colors.redError)
                     Text(showPasswordError)
                         .foregroundColor(colors.redError)
-                Button(action: {
-                    register()
-                }){
-                    Text("Submit")
+                NavigationLink(destination: NameScreen(), isActive: $isActive) {
+                    ZStack{
+                            Button(action: {
+                                if password != passwordConfirm {
+                                    password = ""
+                                    passwordConfirm = ""
+                                    showPasswordError = "Passwords must match"
+                                    return
+                                }
+                                signUp(email: email, password: password, completion: { error in
+                                    if error?.localizedDescription != nil {
+                                        showLoginError = error!.localizedDescription
+                                        isActive = false
+                                    }else{
+                                        isActive = true
+                                    }
+                                })
+                            }){
+                                Text("Log In")
+                            }
+                    }
                 }
-                .padding(15)
-                .background(colors.orange)
-                .cornerRadius(10)
-                .foregroundColor(Color.black)
-                Button(action: { navigator.navigate("..") }) {
-                    Text("Back")
-                }
-                .padding(30)
             }
             .padding([.trailing, .leading], 25)
             .padding(.top, 30)
             .padding(.bottom, 10)
         }
-        .navigationTransition()
+        .navigationBarHidden(true)
     }
     
-    // Validate and submit new account registration
-    func register(){
-        if password != passwordConfirm {
-            password = ""
-            passwordConfirm = ""
-            showPasswordError = "Passwords must match"
-        }
-        Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
-            if let user = authResult?.user {
-                print(user)
-                APICalls.initUser(email: user.email!)
-                showLoginError = ""
-                navigator.navigate("/nameScreen")
-            } else {
-                showLoginError = error!.localizedDescription
+    // Validate and register new user
+    func signUp(email: String, password: String, completion:@escaping (_ error: Error?) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(error) //<-- Here
+        } else {
+            completion(nil)
             }
         }
     }

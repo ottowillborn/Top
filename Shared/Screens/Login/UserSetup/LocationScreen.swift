@@ -14,24 +14,31 @@ import Firebase
 
 // Location screen
 struct LocationScreen: View {
-    @EnvironmentObject private var navigator: Navigator
-    
+    @State private var location = ""
     let colors = Colors()
     
     var body: some View {
-        SwitchRoutes{
-            Text("location pls")
-                .font(.title)
-                .padding(30)
+        NavigationView{
             VStack{
-                Button(action: { navigator.navigate("..") }) {
-                    Text("Back")
-                }
-                Button(action: { navigator.navigate("/BioScreen") }) {
-                    Text("Next")
+                Text("location pls")
+                    .font(.title)
+                    .padding(30)
+                TextField("Location", text: $location )
+                    .padding(15)
+                    .background(colors.lightGray)
+                    .cornerRadius(10)
+                HStack(spacing: 20){
+                    NavigationLink(destination: BirthDayScreen()) {
+                        Text("Back")
+                    }
+                    NavigationLink(destination: BioScreen()) {
+                        Text("Next")
+                    }
                 }
             }
+            .padding(25)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .navigationBarHidden(true)
     }
 }

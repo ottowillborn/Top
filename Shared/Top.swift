@@ -4,7 +4,6 @@
 //
 
 import SwiftUI
-import SwiftUIRouter
 import Firebase
 import FirebaseAuth
 import FirebaseCore
@@ -13,22 +12,24 @@ import FirebaseAuth
 
 // User class holds values that will be preserved when app is closed.
 final class UserClass: ObservableObject{
-    var mainRoute = UserDefaults.standard.string(forKey: "mainRoute")
+    var loggedIn = UserDefaults.standard.bool(forKey: "loggedIn")
 }
 
 @main
+
 struct Top: App {
     init(){
         FirebaseApp.configure()
+        // On app load: if user is logged in, set home page as main route, else set login page as main route.
+        if Auth.auth().currentUser != nil {
+            UserDefaults.standard.set(true, forKey: "loggedIn")
+        } else {
+            UserDefaults.standard.set(false, forKey: "loggedIn")
+        }
     }
-    let colors = Colors()
-    
     var body: some Scene {
-        WindowGroup {
-			Router {
-				RootView()
-			}
-            .background(colors.beige)
+        WindowGroup{
+            ContentView()
         }
     }
 }

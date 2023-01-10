@@ -20,23 +20,27 @@ struct BioScreen: View {
     let colors = Colors()
     
     var body: some View {
-        SwitchRoutes{
-            Text("Bio")
-                .font(.title)
-                .padding(30)
+        NavigationView{
             VStack{
-                TextField("Name", text: $bio )
+                Text("Bio")
+                    .font(.title)
+                    .padding(30)
+                TextField("Tell us abt urself", text: $bio )
                     .padding(15)
                     .background(colors.lightGray)
                     .cornerRadius(10)
-                Button(action: { navigator.navigate("..") }) {
-                    Text("Back")
-                }
-                Button(action: { navigator.navigate("/photosScreen") }) {
-                    Text("Next")
+                HStack(spacing: 20){
+                    NavigationLink(destination: LocationScreen()) {
+                        Text("Back")
+                    }
+                    NavigationLink(destination: PhotosScreen()) {
+                        Text("Next")
+                    }
                 }
             }
+            .padding(25)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .navigationBarHidden(true)
     }
 }
