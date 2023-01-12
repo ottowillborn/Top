@@ -14,15 +14,19 @@ import CoreLocation
 import CoreLocationUI
 
 // Sign user out in Firebase and set default route to login
-func signOut(){
+func signOut(completion:@escaping (_ error: Bool?) -> Void){
     do {
+        print("1")
         try Auth.auth().signOut()
+        print("2")
     } catch let signOutError as NSError {
         print("Error signing out: %@", signOutError)
     }
     if Auth.auth().currentUser != nil {
+        completion(true)
         UserDefaults.standard.set(true, forKey: "loggedIn")
     } else {
+        completion(false)
         UserDefaults.standard.set(false, forKey: "loggedIn")
     }
 }

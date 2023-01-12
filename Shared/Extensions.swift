@@ -31,3 +31,17 @@ private struct NavigationTransition: ViewModifier {
 			.transition(transition(for: navigator.lastAction?.direction))
 	}
 }
+
+extension AnyTransition {
+    static var nextslide: AnyTransition {
+        AnyTransition.asymmetric(
+            insertion: .move(edge: .trailing),
+            removal: .move(edge: .leading))}
+}
+
+extension AnyTransition {
+    static var backslide: AnyTransition {
+        AnyTransition.asymmetric(
+            insertion: .move(edge: .leading),
+            removal: .move(edge: .trailing))}
+}

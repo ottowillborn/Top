@@ -6,32 +6,52 @@
 //
 
 import SwiftUI
+import UIKit
 let user = UserClass()
+
 struct ContentView: View {
+    @EnvironmentObject var appFlowCoordinator: AppFlowCoordinator
     var body: some View {
-        NavigationView{
-            ZStack{
-                if user.loggedIn{
-                    if #available(iOS 16.0, *) {
-                        HomeScreen()
-                    } else {
-                        // Fallback on earlier versions
-                        LoginScreen()
-                    }
-                }else{
-                    LoginScreen()
+        ZStack{
+            if appFlowCoordinator.activeFlow == .login {
+                LoginScreen()
+            }
+            else if appFlowCoordinator.activeFlow == .home {
+                if #available(iOS 16.0, *) {
+                    HomeScreen()
+                } else {
+                    // Fallback on earlier versions
                 }
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+            else if appFlowCoordinator.activeFlow == .signUp {
+                SignUpScreen()
+                    .animation(.easeInOut, value: 2)
+            }
+            else if appFlowCoordinator.activeFlow == .name {
+                if UserDefaults.standard.string(forKey: "slideDirection") == "forward" {
+                    NameScreen().transition(.nextslide)
+                }else{
+                    NameScreen().transition(.backslide)
+                }
+                
+            }
+            else if appFlowCoordinator.activeFlow == .birthday {
+                if UserDefaults.standard.string(forKey: "slideDirection") == "forward" {
+                    BirthDayScreen().transition(.nextslide)
+                }else{
+                    BirthDayScreen().transition(.backslide)
+                }
+                }
+            else {
+                EmptyView()
+            }
         }
+        
     }
 }
 
-struct AppPreview: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView(){
-            ContentView()
-        }
+        ContentView().environmentObject(AppFlowCoordinator())
     }
 }

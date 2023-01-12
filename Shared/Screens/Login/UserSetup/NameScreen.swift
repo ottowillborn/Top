@@ -14,13 +14,14 @@ import Firebase
 
 // Name screen
 struct NameScreen: View {
+    @EnvironmentObject var appFlowCoordinator: AppFlowCoordinator
+
     // Preserve name
     @State private var name = ""
     
     let colors = Colors()
     
     var body: some View {
-        NavigationView{
             VStack(spacing: 15){
                 
                 Text("Who the fuck are you")
@@ -35,21 +36,19 @@ struct NameScreen: View {
                     .cornerRadius(10)
                 
                 VStack{
-                    if !name.isEmpty{
-                        NavigationLink(destination: BirthDayScreen().onAppear {
-                            UserDefaults.standard.set(name, forKey: "name")
-                        }) {
+                    
+                        Button(action: {
+                            appFlowCoordinator.showBirthdayView(animationDirection: "forward")
+                        }){
                             Text("Next")
                         }
-                    }
+                    
                 }
                 .frame(width: 40, height: 20)
                 
             }
             .padding(25)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
-        .navigationBarHidden(true)
     }
 }
 

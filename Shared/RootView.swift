@@ -1,6 +1,8 @@
 //
-//  RandomUsers App
-//  Created by Freek (github.com/frzi) 2021
+//  RootView.swift
+//  Top (iOS)
+//
+//  Created by Otto Willborn on 2023-01-10.
 //
 
 import SwiftUI
@@ -10,16 +12,15 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
-// User class holds values that will be preserved when app is closed.
-final class UserClass: ObservableObject{
-    var loggedIn = UserDefaults.standard.bool(forKey: "loggedIn")
-}
-
-struct Top: App {
+struct RootView: View {
+    @EnvironmentObject var appFlowCoordinator: AppFlowCoordinator
+    @State private var animationAmount = 1.0
     init(){
         FirebaseApp.configure()
         UserDefaults.standard.set("", forKey: "name")
         UserDefaults.standard.set(Date(), forKey: "birthDate")
+        UserDefaults.standard.set("forward", forKey: "slideDirection")
+       
         // On app load: if user is logged in, set home page as main route, else set login page as main route.
         if Auth.auth().currentUser != nil {
             UserDefaults.standard.set(true, forKey: "loggedIn")
@@ -27,9 +28,11 @@ struct Top: App {
             UserDefaults.standard.set(false, forKey: "loggedIn")
         }
     }
-    var body: some Scene {
-        WindowGroup{
-            RootView()
-        }
+    
+
+    @ViewBuilder
+    
+    var body: some View {
+        ContentView()
     }
 }

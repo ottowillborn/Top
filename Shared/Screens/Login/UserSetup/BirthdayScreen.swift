@@ -14,12 +14,12 @@ import Firebase
 
 //  Birthday screen
 struct BirthDayScreen: View {
+    @EnvironmentObject var appFlowCoordinator: AppFlowCoordinator
     @State private var selectedDate = Date()
     
     let colors = Colors()
     
     var body: some View {
-        NavigationView{
             VStack{
                 Text("Birthday bum")
                     .font(.title)
@@ -38,14 +38,16 @@ struct BirthDayScreen: View {
                 }
                 HStack(spacing: 20){
                     //store on back as well
-                    NavigationLink(destination: NameScreen()) {
+                    Button(action: {
+                        appFlowCoordinator.showNameView(animationDirection: "backwards")
+                    }){
                         Text("Back")
                     }
+
                     if validateDate(){
-                        NavigationLink(destination: LocationScreen().onAppear(){
-                            print(validateDate())
-                            UserDefaults.standard.set(selectedDate, forKey: "birthDate")
-                        }) {
+                        Button(action: {
+                            appFlowCoordinator.showNameView(animationDirection: "forward")
+                        }){
                             Text("Next")
                         }
                     }
@@ -53,8 +55,6 @@ struct BirthDayScreen: View {
             }
             .padding(25)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
-        .navigationBarHidden(true)
     }
     func validateDate() -> Bool {
         let now = Date()

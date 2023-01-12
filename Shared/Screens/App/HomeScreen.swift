@@ -11,6 +11,7 @@ import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
+import UIKit
 
 // Main screen for app when logged in
 class Profile {
@@ -24,11 +25,11 @@ struct HomeScreen: View {
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedPhotoData: Data? = nil
     @State private var displayImage: UIImage? = nil
+    @State var isActive: Bool = false
     let db = Firestore.firestore()
     let colors = Colors()
     
     var body: some View {
-        NavigationView{
             VStack{
                 Text("Home")
                     .font(.title)
@@ -61,24 +62,31 @@ struct HomeScreen: View {
                 Button(action: {downloadPhoto()}) {
                     Text("download image")
                 }.padding(.bottom, 10)
-                NavigationLink(destination: LoginScreen()) {
-                    ZStack{
+
+                NavigationLink(destination: LoginScreen(), isActive: $isActive) {
+                    VStack{
                             Button(action: {
-                                signOut()
+                                print(isActive)
+                                signOut(completion: { error in
+                                    if error! {
+                                        isActive = false
+                                        print("error")
+                                    }else{
+                                        isActive = true
+                                    }
+                                })
+                                print(isActive)
                             }){
                                 Text("Sign Out")
                             }
                     }
+                    .navigationBarHidden(true)
                 }
-                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .safeAreaInset(edge: .bottom){
                 NavigationBar()
             }
-        }
-        .navigationBarHidden(true)
-        
     }
     func uploadPhoto(){
         print(type(of: selectedItem))

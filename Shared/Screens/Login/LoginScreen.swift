@@ -1,23 +1,26 @@
 //
-//  RandomUsers App
-//  Created by Freek (github.com/frzi) 2021
+//  Top App
+//  Created by otto 2023
 //
 
 import Foundation
 import SwiftUI
 import SwiftUIRouter
 import FirebaseAuth
+import PhotosUI
+import Firebase
 
 struct LoginScreen: View {
+    @EnvironmentObject var appFlowCoordinator: AppFlowCoordinator
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var showLoginError = ""
     @State var isActive: Bool = false
+    
 
     let colors = Colors()
     
     var body: some View {
-        NavigationView {
             ZStack(){
                 Circle()
                     .scale(1.9)
@@ -39,43 +42,32 @@ struct LoginScreen: View {
                         .cornerRadius(10)
                     Text(showLoginError)
                         .foregroundColor(colors.redError)
-                    if #available(iOS 16.0, *) {
-                        NavigationLink(destination: HomeScreen(), isActive: $isActive) {
-                            VStack{
-                                Button(action: {
-                                    signIn(email: email, password: password, completion: { error in
-                                        if error?.localizedDescription != nil {
-                                            showLoginError = error!.localizedDescription
-                                            isActive = false
-                                        }else{
-                                            isActive = true
-                                        }
-                                    })
-                                }){
-                                    Text("Log In")
-                                }
-                                .padding(15)
-                                .background(colors.orange)
-                                .cornerRadius(10)
-                                .foregroundColor(Color.black)
+                    Button(action: {
+                        signIn(email: email, password: password, completion: { error in
+                            if error?.localizedDescription != nil {
+                                showLoginError = error!.localizedDescription
+                            }else{
+                                appFlowCoordinator.showHomeView()
                             }
-                        }
-                    } else {
-                        // Fallback on earlier versions
+                        })
+                    }){
+                        Text("Log In")
                     }
-    
+                    .padding(15)
+                    .background(colors.orange)
+                    .cornerRadius(10)
+                    .foregroundColor(Color.black)
+                            
                     HStack(spacing: 0){
                         Text("Don't have an account? ")
-                        NavigationLink(destination: SignUpScreen(isActive: false), label: {
+                        Button(action: appFlowCoordinator.showSignUpView) {
                             Text("Sign Up")
-                        })
+                        }
                     }
                 }
             }
             .padding([.trailing, .leading], 25)
             .padding(.bottom, 40)
-            
-        }
     }
     
     func signIn(email: String, password: String, completion:@escaping (_ error: Error?) -> Void) {

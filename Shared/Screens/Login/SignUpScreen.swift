@@ -12,6 +12,7 @@ import Firebase
 
 // Screen to register a new user using FirebaseAuth
 struct SignUpScreen: View {
+    @EnvironmentObject var appFlowCoordinator: AppFlowCoordinator
     @State private var email = ""
     @State private var password = ""
     @State private var passwordConfirm = ""
@@ -23,7 +24,6 @@ struct SignUpScreen: View {
     let colors = Colors()
     
     var body: some View {
-        NavigationView {
             VStack(spacing: 15){
                 Text("Register")
                     .font(.largeTitle)
@@ -45,34 +45,36 @@ struct SignUpScreen: View {
                     Text(showPasswordError)
                         .foregroundColor(colors.redError)
                 //add isactive
-                NavigationLink(destination: NameScreen(), isActive: $isActive) {
-                    VStack{
-                            Button(action: {
-                                if password != passwordConfirm {
-                                    password = ""
-                                    passwordConfirm = ""
-                                    showPasswordError = "Passwords must match"
-                                    return
-                                }
-                                signUp(email: email, password: password, completion: { error in
-                                    if error?.localizedDescription != nil {
-                                        showLoginError = error!.localizedDescription
-                                        isActive = false
-                                    }else{
-                                        isActive = true
-                                    }
-                                })
-                            }){
-                                Text("Log In")
-                            }
-                    }
+
+
+//                    Button(action: {
+//                        if password != passwordConfirm {
+//                            password = ""
+//                            passwordConfirm = ""
+//                            showPasswordError = "Passwords must match"
+//                            return
+//                        }
+//                        signUp(email: email, password: password, completion: { error in
+//                            if error?.localizedDescription != nil {
+//                                showLoginError = error!.localizedDescription
+//                            }else{
+//                                appFlowCoordinator.showNameView()
+//                            }
+//                        })
+//                    }){
+//                        Text("Log In")
+//                    }
+                Button(action: {
+                    appFlowCoordinator.showNameView(animationDirection: "forward")
+                }){
+                    Text("go")
                 }
+                    
+                
             }
             .padding([.trailing, .leading], 25)
             .padding(.top, 30)
             .padding(.bottom, 10)
-        }
-        .navigationBarHidden(true)
     }
     
     // Validate and register new user
