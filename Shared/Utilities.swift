@@ -59,3 +59,20 @@ extension String {
     }
 }
 
+struct Stack {
+    private var items: [AppFlowCoordinator.Flow] = []
+    
+    func peek() -> AppFlowCoordinator.Flow {
+        guard let topElement = items.first else { fatalError("This stack is empty.") }
+        return topElement
+    }
+    
+    mutating func pop() -> AppFlowCoordinator.Flow {
+        return items.removeFirst()
+    }
+  
+    mutating func push(_ element: AppFlowCoordinator.Flow) {
+        items.insert(element, at: 0)
+    }
+}
+

@@ -14,7 +14,7 @@ import Firebase
 
 // Bio screen
 struct BioScreen: View {
-    @EnvironmentObject private var navigator: Navigator
+    @EnvironmentObject var appFlowCoordinator: AppFlowCoordinator
     @State private var bio = ""
     
     let colors = Colors()
@@ -30,10 +30,16 @@ struct BioScreen: View {
                     .background(colors.lightGray)
                     .cornerRadius(10)
                 HStack(spacing: 20){
-                    NavigationLink(destination: LocationScreen()) {
+                    Button(action: {
+                        UserDefaults.standard.set(false, forKey: "isForwardAnimation")
+                        appFlowCoordinator.showLocationView()
+                    }){
                         Text("Back")
                     }
-                    NavigationLink(destination: PhotosScreen()) {
+                    Button(action: {
+                        UserDefaults.standard.set(true, forKey: "isForwardAnimation")
+                        appFlowCoordinator.showPhotosView()
+                    }){
                         Text("Next")
                     }
                 }

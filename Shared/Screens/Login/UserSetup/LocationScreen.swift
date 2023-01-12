@@ -14,11 +14,11 @@ import Firebase
 
 // Location screen
 struct LocationScreen: View {
+    @EnvironmentObject var appFlowCoordinator: AppFlowCoordinator
     @State private var location = ""
     let colors = Colors()
     
     var body: some View {
-        NavigationView{
             VStack{
                 Text("location pls")
                     .font(.title)
@@ -28,17 +28,21 @@ struct LocationScreen: View {
                     .background(colors.lightGray)
                     .cornerRadius(10)
                 HStack(spacing: 20){
-                    NavigationLink(destination: BirthDayScreen()) {
+                    Button(action: {
+                        UserDefaults.standard.set(false, forKey: "isForwardAnimation")
+                        appFlowCoordinator.showBirthdayView()
+                    }){
                         Text("Back")
                     }
-                    NavigationLink(destination: BioScreen()) {
+                    Button(action: {
+                        UserDefaults.standard.set(true, forKey: "isForwardAnimation")
+                        appFlowCoordinator.showBioView()
+                    }){
                         Text("Next")
                     }
                 }
             }
             .padding(25)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
-        .navigationBarHidden(true)
     }
 }

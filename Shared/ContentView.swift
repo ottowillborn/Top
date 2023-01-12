@@ -25,23 +25,42 @@ struct ContentView: View {
             }
             else if appFlowCoordinator.activeFlow == .signUp {
                 SignUpScreen()
-                    .animation(.easeInOut, value: 2)
             }
             else if appFlowCoordinator.activeFlow == .name {
-                if UserDefaults.standard.string(forKey: "slideDirection") == "forward" {
+                if UserDefaults.standard.bool(forKey: "isForwardAnimation") {
                     NameScreen().transition(.nextslide)
                 }else{
                     NameScreen().transition(.backslide)
                 }
-                
             }
             else if appFlowCoordinator.activeFlow == .birthday {
-                if UserDefaults.standard.string(forKey: "slideDirection") == "forward" {
+                if UserDefaults.standard.bool(forKey: "isForwardAnimation") {
                     BirthDayScreen().transition(.nextslide)
                 }else{
                     BirthDayScreen().transition(.backslide)
                 }
+            }
+            else if appFlowCoordinator.activeFlow == .location {
+                if UserDefaults.standard.bool(forKey: "isForwardAnimation") {
+                    LocationScreen().transition(.nextslide)
+                }else{
+                    LocationScreen().transition(.backslide)
                 }
+            }
+            else if appFlowCoordinator.activeFlow == .bio {
+                if UserDefaults.standard.bool(forKey: "isForwardAnimation") {
+                    BioScreen().transition(.nextslide)
+                }else{
+                    BioScreen().transition(.backslide)
+                }
+            }
+            else if appFlowCoordinator.activeFlow == .photos {
+                if UserDefaults.standard.bool(forKey: "isForwardAnimation") {
+                    PhotosScreen().transition(.nextslide)
+                }else{
+                    PhotosScreen().transition(.backslide)
+                }
+            }
             else {
                 EmptyView()
             }
@@ -50,8 +69,3 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environmentObject(AppFlowCoordinator())
-    }
-}

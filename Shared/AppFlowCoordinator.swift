@@ -23,7 +23,7 @@ final class AppFlowCoordinator: ObservableObject {
     }
     
     func showHomeView() {
-        withAnimation() {
+        withAnimation(.easeInOut(duration: 3)) {
             activeFlow = .home
         }
     }
@@ -34,23 +34,47 @@ final class AppFlowCoordinator: ObservableObject {
         }
     }
     
-    func showNameView(animationDirection: String) {
-        UserDefaults.standard.set(animationDirection, forKey: "animationDirection")
+    func showNameView() {
         withAnimation() {
             activeFlow = .name
         }
     }
     
-    func showBirthdayView(animationDirection: String) {
-        UserDefaults.standard.set(animationDirection, forKey: "animationDirection")
+    func showBirthdayView() {
         withAnimation() {
             activeFlow = .birthday
+        }
+    }
+    
+    func showLocationView() {
+        withAnimation() {
+            activeFlow = .location
+        }
+    }
+    
+    func showBioView() {
+        withAnimation() {
+            activeFlow = .bio
+        }
+    }
+    
+    func showPhotosView() {
+        withAnimation() {
+            activeFlow = .photos
         }
     }
 }
 
 extension AppFlowCoordinator {
     enum Flow {
-        case login, main, home, signUp, name, birthday
+        case login,
+             main,
+             home,
+             signUp,
+             name,
+             birthday,
+             location,
+             bio,
+             photos
     }
 }

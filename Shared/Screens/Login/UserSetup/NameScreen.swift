@@ -38,7 +38,9 @@ struct NameScreen: View {
                 VStack{
                     
                         Button(action: {
-                            appFlowCoordinator.showBirthdayView(animationDirection: "forward")
+                            UserDefaults.standard.set(name, forKey: "name")
+                            UserDefaults.standard.set(true, forKey: "isForwardAnimation")
+                            appFlowCoordinator.showBirthdayView()
                         }){
                             Text("Next")
                         }

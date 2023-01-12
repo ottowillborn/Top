@@ -39,14 +39,16 @@ struct BirthDayScreen: View {
                 HStack(spacing: 20){
                     //store on back as well
                     Button(action: {
-                        appFlowCoordinator.showNameView(animationDirection: "backwards")
+                        UserDefaults.standard.set(false, forKey: "isForwardAnimation")
+                        appFlowCoordinator.showNameView()
                     }){
                         Text("Back")
                     }
 
                     if validateDate(){
                         Button(action: {
-                            appFlowCoordinator.showNameView(animationDirection: "forward")
+                            UserDefaults.standard.set(true, forKey: "isForwardAnimation")
+                            appFlowCoordinator.showLocationView()
                         }){
                             Text("Next")
                         }

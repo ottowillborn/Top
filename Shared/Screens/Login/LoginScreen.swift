@@ -29,6 +29,9 @@ struct LoginScreen: View {
                     .scale(1.45)
                     .foregroundColor(.white)
                 VStack(spacing: 15){
+                    Image("topLogo")
+                        .resizable()
+                        .frame(maxWidth: 100, maxHeight: 100)
                     Text("Top")
                         .font(.largeTitle)
                         .padding(.bottom, 40)

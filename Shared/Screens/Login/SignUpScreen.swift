@@ -65,7 +65,8 @@ struct SignUpScreen: View {
 //                        Text("Log In")
 //                    }
                 Button(action: {
-                    appFlowCoordinator.showNameView(animationDirection: "forward")
+                    UserDefaults.standard.set(true,forKey: "isForwardAnimation")
+                    appFlowCoordinator.showNameView()
                 }){
                     Text("go")
                 }

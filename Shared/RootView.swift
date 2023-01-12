@@ -20,6 +20,7 @@ struct RootView: View {
         UserDefaults.standard.set("", forKey: "name")
         UserDefaults.standard.set(Date(), forKey: "birthDate")
         UserDefaults.standard.set("forward", forKey: "slideDirection")
+        UserDefaults.standard.set(true, forKey: "isForwardAnimation")
        
         // On app load: if user is logged in, set home page as main route, else set login page as main route.
         if Auth.auth().currentUser != nil {

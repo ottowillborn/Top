@@ -36,12 +36,12 @@ extension AnyTransition {
     static var nextslide: AnyTransition {
         AnyTransition.asymmetric(
             insertion: .move(edge: .trailing),
-            removal: .move(edge: .leading))}
+            removal: .opacity)}
 }
 
 extension AnyTransition {
     static var backslide: AnyTransition {
         AnyTransition.asymmetric(
             insertion: .move(edge: .leading),
-            removal: .move(edge: .trailing))}
+            removal: .opacity)}
 }
