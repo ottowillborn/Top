@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
@@ -33,10 +32,28 @@ struct PhotosScreen: View {
                         Text("Back")
                     }
                     Button(action: {
+                        print(UserDefaults.standard.bool(forKey: "loggedIn"))
+                        print(UserDefaults.standard.string(forKey: "name")!)
+                        print(UserDefaults.standard.object(forKey: "birthDate")!)
+                        print(UserDefaults.standard.string(forKey: "location")!)
+                        print(UserDefaults.standard.string(forKey: "bio")!)
+                        print(UserDefaults.standard.array(forKey: "photos")!)
+                        APICalls.updateUser()
+
                         UserDefaults.standard.set(true, forKey: "isForwardAnimation")
                         appFlowCoordinator.showHomeView()
                     }){
                         Text("Next")
+                    }
+                    Button(action: {
+                        print(user.loggedIn)
+                        print(user.name!)
+                        print(user.birthDate)
+                        print(user.location!)
+                        print(user.bio!)
+                        print(user.photos!)
+                    }){
+                        Text("print")
                     }
                 }
             }

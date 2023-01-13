@@ -8,11 +8,9 @@
 import Foundation
 import SwiftUI
 import FirebaseAuth
-import SwiftUIRouter
 
 //Password reset screen, WIP
 struct ForgotPasswordScreen: View {
-    @EnvironmentObject private var navigator: Navigator
     @State private var email = ""
 
     let lightGray = Color(#colorLiteral(red: 0.8124992251, green: 0.8971869349, blue: 0.8967813849, alpha: 1))
@@ -20,7 +18,6 @@ struct ForgotPasswordScreen: View {
     let redError = Color(#colorLiteral(red: 0.853534162, green: 0, blue: 0, alpha: 1))
     
     var body: some View {
-        SwitchRoutes {
             Text("Reset Password")
                 .font(.largeTitle)
                 .padding(.bottom, 20)
@@ -43,14 +40,9 @@ struct ForgotPasswordScreen: View {
                 .background(orange)
                 .cornerRadius(10)
                 .foregroundColor(Color.black)
-                Button(action: { navigator.navigate("..") }) {
-                    Text("Back")
-                }
             }
             .padding([.trailing, .leading], 25)
             .padding(.top, 30)
             .padding(.bottom, 10)
-        }
-        .navigationTransition()
     }
 }

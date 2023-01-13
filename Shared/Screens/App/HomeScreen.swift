@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
@@ -21,7 +20,6 @@ class Profile {
 }
 @available(iOS 16.0, *)
 struct HomeScreen: View {
-    @EnvironmentObject private var navigator: Navigator
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedPhotoData: Data? = nil
     @State private var displayImage: UIImage? = nil
@@ -62,8 +60,6 @@ struct HomeScreen: View {
                 Button(action: {downloadPhoto()}) {
                     Text("download image")
                 }.padding(.bottom, 10)
-
-                NavigationLink(destination: LoginScreen(), isActive: $isActive) {
                     VStack{
                             Button(action: {
                                 print(isActive)
@@ -80,13 +76,9 @@ struct HomeScreen: View {
                                 Text("Sign Out")
                             }
                     }
-                    .navigationBarHidden(true)
                 }
-            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .safeAreaInset(edge: .bottom){
-                NavigationBar()
-            }
+
     }
     func uploadPhoto(){
         print(type(of: selectedItem))

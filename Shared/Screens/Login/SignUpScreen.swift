@@ -5,7 +5,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
@@ -45,33 +44,25 @@ struct SignUpScreen: View {
                     Text(showPasswordError)
                         .foregroundColor(colors.redError)
                 //add isactive
-
-
-//                    Button(action: {
-//                        if password != passwordConfirm {
-//                            password = ""
-//                            passwordConfirm = ""
-//                            showPasswordError = "Passwords must match"
-//                            return
-//                        }
-//                        signUp(email: email, password: password, completion: { error in
-//                            if error?.localizedDescription != nil {
-//                                showLoginError = error!.localizedDescription
-//                            }else{
-//                                appFlowCoordinator.showNameView()
-//                            }
-//                        })
-//                    }){
-//                        Text("Log In")
-//                    }
-                Button(action: {
-                    UserDefaults.standard.set(true,forKey: "isForwardAnimation")
-                    appFlowCoordinator.showNameView()
-                }){
-                    Text("go")
-                }
-                    
-                
+                    Button(action: {
+                        if password != passwordConfirm {
+                            password = ""
+                            passwordConfirm = ""
+                            showPasswordError = "Passwords must match"
+                            return
+                        }
+                        signUp(email: email, password: password, completion: { error in
+                            if error?.localizedDescription != nil {
+                                showLoginError = error!.localizedDescription
+                            }else{
+                                APICalls.initUser()
+                                UserDefaults.standard.set(true,forKey: "isForwardAnimation")
+                                appFlowCoordinator.showNameView()
+                            }
+                        })
+                    }){
+                        Text("Register")
+                    }
             }
             .padding([.trailing, .leading], 25)
             .padding(.top, 30)

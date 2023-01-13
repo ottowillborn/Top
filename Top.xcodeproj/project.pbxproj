@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C0316B7C275243CF00BBE3D9 /* Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0316B54275243CC00BBE3D9 /* Top.swift */; };
-		C0316B7D275243CF00BBE3D9 /* Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0316B54275243CC00BBE3D9 /* Top.swift */; };
 		C0316B80275243CF00BBE3D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0316B56275243CE00BBE3D9 /* Assets.xcassets */; };
 		C0316B81275243CF00BBE3D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0316B56275243CE00BBE3D9 /* Assets.xcassets */; };
 		C0316B922752444800BBE3D9 /* randomusers.json in Resources */ = {isa = PBXBuildFile; fileRef = C0316B912752444800BBE3D9 /* randomusers.json */; };
@@ -22,8 +20,6 @@
 		C0DAACD2275BF3DD001A4EB4 /* SwiftUIRouter in Frameworks */ = {isa = PBXBuildFile; productRef = C0DAACD1275BF3DD001A4EB4 /* SwiftUIRouter */; };
 		C0DAACD4275BF3E4001A4EB4 /* SwiftUIRouter in Frameworks */ = {isa = PBXBuildFile; productRef = C0DAACD3275BF3E4001A4EB4 /* SwiftUIRouter */; };
 		DD9FE5F32969F7ED00F06F07 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2E2D429691E8000B0DE45 /* ForgotPasswordScreen.swift */; };
-		DD9FE5F62969F81500F06F07 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5F52969F81500F06F07 /* NavigationBar.swift */; };
-		DD9FE5F72969F81500F06F07 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5F52969F81500F06F07 /* NavigationBar.swift */; };
 		DD9FE5F92969FF8A00F06F07 /* LeaderboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5F82969FF8A00F06F07 /* LeaderboardScreen.swift */; };
 		DD9FE5FD296A177900F06F07 /* MessagesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5FC296A177900F06F07 /* MessagesScreen.swift */; };
 		DD9FE5FF296A179E00F06F07 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9FE5FE296A179E00F06F07 /* ProfileScreen.swift */; };
@@ -50,7 +46,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C0316B54275243CC00BBE3D9 /* Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top.swift; sourceTree = "<group>"; };
 		C0316B56275243CE00BBE3D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0316B5B275243CE00BBE3D9 /* Top.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Top.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0316B61275243CE00BBE3D9 /* Top.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Top.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +54,6 @@
 		C0316BA22752491E00BBE3D9 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		C0316BA527525F3800BBE3D9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C0316BB12752690900BBE3D9 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
-		DD9FE5F52969F81500F06F07 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		DD9FE5F82969FF8A00F06F07 /* LeaderboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardScreen.swift; sourceTree = "<group>"; };
 		DD9FE5FC296A177900F06F07 /* MessagesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesScreen.swift; sourceTree = "<group>"; };
 		DD9FE5FE296A179E00F06F07 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
@@ -122,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				DDF2E2D22969063D00B0DE45 /* GoogleService-Info.plist */,
-				C0316B54275243CC00BBE3D9 /* Top.swift */,
 				DD9FE61D296E8B6C00F06F07 /* AppDelegate.swift */,
 				DD9FE61F296E8BAE00F06F07 /* SceneDelegate.swift */,
 				DD9FE615296CEE7100F06F07 /* ContentView.swift */,
@@ -203,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				DDF2E2C32967D36100B0DE45 /* HomeScreen.swift */,
-				DD9FE5F52969F81500F06F07 /* NavigationBar.swift */,
 				DD9FE5F82969FF8A00F06F07 /* LeaderboardScreen.swift */,
 				DD9FE5FC296A177900F06F07 /* MessagesScreen.swift */,
 				DD9FE5FE296A179E00F06F07 /* ProfileScreen.swift */,
@@ -349,12 +341,10 @@
 				DD9FE620296E8BAE00F06F07 /* SceneDelegate.swift in Sources */,
 				C0316BA32752491E00BBE3D9 /* LoginScreen.swift in Sources */,
 				DDF2E2C42967D36100B0DE45 /* HomeScreen.swift in Sources */,
-				DD9FE5F62969F81500F06F07 /* NavigationBar.swift in Sources */,
 				DD9FE601296A17D600F06F07 /* SettingsScreen.swift in Sources */,
 				DD9FE603296A5C3900F06F07 /* APICalls.swift in Sources */,
 				DD9FE61C296E8A3600F06F07 /* AppFlowCoordinator.swift in Sources */,
 				DD9FE5FF296A179E00F06F07 /* ProfileScreen.swift in Sources */,
-				C0316B7C275243CF00BBE3D9 /* Top.swift in Sources */,
 				DD9FE5FD296A177900F06F07 /* MessagesScreen.swift in Sources */,
 				DD9FE612296BE52800F06F07 /* LocationScreen.swift in Sources */,
 				DDF2E2D82969317600B0DE45 /* Utilities.swift in Sources */,
@@ -371,9 +361,7 @@
 				DD9FE5F32969F7ED00F06F07 /* ForgotPasswordScreen.swift in Sources */,
 				C0316BA727525F3800BBE3D9 /* Extensions.swift in Sources */,
 				DD9FE61A296E7AD000F06F07 /* HomeScreen.swift in Sources */,
-				DD9FE5F72969F81500F06F07 /* NavigationBar.swift in Sources */,
 				C0316BA42752491E00BBE3D9 /* LoginScreen.swift in Sources */,
-				C0316B7D275243CF00BBE3D9 /* Top.swift in Sources */,
 				C0316BB32752690900BBE3D9 /* SignUpScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

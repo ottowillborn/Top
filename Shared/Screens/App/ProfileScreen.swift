@@ -7,21 +7,18 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
 
 // Leaderboard screen
 struct ProfileScreen: View {
-    @EnvironmentObject private var navigator: Navigator
     @State private var name = ""
     @State private var bio = ""
     
     let colors = Colors()
     
     var body: some View {
-        SwitchRoutes{
             Text("Profile")
                 .font(.title)
                 .padding(30)
@@ -30,14 +27,10 @@ struct ProfileScreen: View {
                     .padding(15)
                     .background(colors.lightGray)
                     .cornerRadius(10)
-                Button(action: {APICalls.updateName(name: name)}) {
+                Button(action: {APICalls.updateUser()}) {
                     Text("upload")
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .safeAreaInset(edge: .bottom){
-                NavigationBar()
-            }
-        }
     }
 }

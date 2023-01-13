@@ -5,7 +5,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
@@ -71,16 +70,15 @@ struct LoginScreen: View {
             }
             .padding([.trailing, .leading], 25)
             .padding(.bottom, 40)
-    }
+        }
     
     func signIn(email: String, password: String, completion:@escaping (_ error: Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                print(error.localizedDescription)
                 completion(error) //<-- Here
         } else {
             completion(nil)
-            }
         }
+    }
     }
 }

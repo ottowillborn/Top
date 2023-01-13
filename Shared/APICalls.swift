@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
@@ -15,11 +14,16 @@ import Firebase
 // Initiate a new users collection in database
 class APICalls{
     
-    static func initUser(email: String) {
+    static func initUser() {
         let date: Date = Date()
         print("in init")
-        db.collection("users").document(email).setData([
-            "creatonDate": date
+        db.collection("users").document(Auth.auth().currentUser!.email!).setData([
+            "creatonDate": date,
+            "name": user.name!,
+            "birthDate": user.birthDate,
+            "location": user.location!,
+            "bio": user.bio!,
+            "photos": user.photos!
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -29,10 +33,14 @@ class APICalls{
         }
     }
     
-    static func updateName(name: String) {
+    static func updateUser() {
         let userRef = db.collection("users").document(Auth.auth().currentUser!.email!)
         userRef.updateData([
-            "name": name
+            "name": UserDefaults.standard.string(forKey: "name")!,
+            "birthDate": UserDefaults.standard.object(forKey: "birthDate")!,
+            "location": UserDefaults.standard.string(forKey: "location")!,
+            "bio": UserDefaults.standard.string(forKey: "bio")!,
+            "photos": UserDefaults.standard.array(forKey: "photos")!,
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")

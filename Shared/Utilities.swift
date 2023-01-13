@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import Firebase
 import FirebaseAuth
-import SwiftUIRouter
 import CoreLocation
 import CoreLocationUI
 
@@ -56,23 +55,6 @@ extension String {
             return nil
         }
         return UIImage(data: imageData)
-    }
-}
-
-struct Stack {
-    private var items: [AppFlowCoordinator.Flow] = []
-    
-    func peek() -> AppFlowCoordinator.Flow {
-        guard let topElement = items.first else { fatalError("This stack is empty.") }
-        return topElement
-    }
-    
-    mutating func pop() -> AppFlowCoordinator.Flow {
-        return items.removeFirst()
-    }
-  
-    mutating func push(_ element: AppFlowCoordinator.Flow) {
-        items.insert(element, at: 0)
     }
 }
 

@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
@@ -20,26 +19,36 @@ struct LocationScreen: View {
     
     var body: some View {
             VStack{
+                
                 Text("location pls")
                     .font(.title)
                     .padding(30)
-                TextField("Location", text: $location )
+                
+                TextField("Location", text: $location ).onAppear(){
+                    self.location = UserDefaults.standard.string(forKey: "location")!
+                }
                     .padding(15)
                     .background(colors.lightGray)
                     .cornerRadius(10)
+                
                 HStack(spacing: 20){
+                    
                     Button(action: {
+                        UserDefaults.standard.set(location, forKey: "location")
                         UserDefaults.standard.set(false, forKey: "isForwardAnimation")
                         appFlowCoordinator.showBirthdayView()
                     }){
                         Text("Back")
                     }
+                    
                     Button(action: {
+                        UserDefaults.standard.set(location, forKey: "location")
                         UserDefaults.standard.set(true, forKey: "isForwardAnimation")
                         appFlowCoordinator.showBioView()
                     }){
                         Text("Next")
                     }
+                    
                 }
             }
             .padding(25)

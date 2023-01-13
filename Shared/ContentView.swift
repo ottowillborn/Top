@@ -7,7 +7,6 @@
 
 import SwiftUI
 import UIKit
-let user = UserClass()
 
 struct ContentView: View {
     @EnvironmentObject var appFlowCoordinator: AppFlowCoordinator

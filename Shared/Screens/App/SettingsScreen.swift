@@ -7,17 +7,14 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
 
 // Leaderboard screen
 struct SettingsScreen: View {
-    @EnvironmentObject private var navigator: Navigator
     
     var body: some View {
-        SwitchRoutes{
             Text("Settings")
                 .font(.title)
                 .padding(30)
@@ -25,9 +22,5 @@ struct SettingsScreen: View {
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .safeAreaInset(edge: .bottom){
-                NavigationBar()
-            }
-        }
     }
 }

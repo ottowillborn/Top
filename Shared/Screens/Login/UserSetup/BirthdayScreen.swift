@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRouter
 import FirebaseAuth
 import PhotosUI
 import Firebase
@@ -39,6 +38,7 @@ struct BirthDayScreen: View {
                 HStack(spacing: 20){
                     //store on back as well
                     Button(action: {
+                        UserDefaults.standard.set(selectedDate, forKey: "birthDate")
                         UserDefaults.standard.set(false, forKey: "isForwardAnimation")
                         appFlowCoordinator.showNameView()
                     }){
@@ -47,6 +47,7 @@ struct BirthDayScreen: View {
 
                     if validateDate(){
                         Button(action: {
+                            UserDefaults.standard.set(selectedDate, forKey: "birthDate")
                             UserDefaults.standard.set(true, forKey: "isForwardAnimation")
                             appFlowCoordinator.showLocationView()
                         }){
