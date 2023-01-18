@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39EBFD9E297853DE0004EA69 /* SwipingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBFD9D297853DE0004EA69 /* SwipingScreen.swift */; };
 		C0316B80275243CF00BBE3D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0316B56275243CE00BBE3D9 /* Assets.xcassets */; };
 		C0316B81275243CF00BBE3D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0316B56275243CE00BBE3D9 /* Assets.xcassets */; };
 		C0316B922752444800BBE3D9 /* randomusers.json in Resources */ = {isa = PBXBuildFile; fileRef = C0316B912752444800BBE3D9 /* randomusers.json */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39EBFD9D297853DE0004EA69 /* SwipingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingScreen.swift; sourceTree = "<group>"; };
 		C0316B56275243CE00BBE3D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0316B5B275243CE00BBE3D9 /* Top.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Top.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0316B61275243CE00BBE3D9 /* Top.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Top.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,7 +177,7 @@
 		C0316BA12752491000BBE3D9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				DD9FE5F42969F7F800F06F07 /* App */,
+				DD9FE5F42969F7F800F06F07 /* MainScreens */,
 				DD9FE5F22969F7E000F06F07 /* Login */,
 			);
 			path = Screens;
@@ -192,16 +194,17 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		DD9FE5F42969F7F800F06F07 /* App */ = {
+		DD9FE5F42969F7F800F06F07 /* MainScreens */ = {
 			isa = PBXGroup;
 			children = (
 				DDF2E2C32967D36100B0DE45 /* HomeScreen.swift */,
 				DD9FE5F82969FF8A00F06F07 /* LeaderboardScreen.swift */,
 				DD9FE5FC296A177900F06F07 /* MessagesScreen.swift */,
+				39EBFD9D297853DE0004EA69 /* SwipingScreen.swift */,
 				DD9FE5FE296A179E00F06F07 /* ProfileScreen.swift */,
 				DD9FE600296A17D600F06F07 /* SettingsScreen.swift */,
 			);
-			path = App;
+			path = MainScreens;
 			sourceTree = "<group>";
 		};
 		DD9FE60A296BE45400F06F07 /* UserSetup */ = {
@@ -349,6 +352,7 @@
 				DD9FE612296BE52800F06F07 /* LocationScreen.swift in Sources */,
 				DDF2E2D82969317600B0DE45 /* Utilities.swift in Sources */,
 				DD9FE61E296E8B6C00F06F07 /* AppDelegate.swift in Sources */,
+				39EBFD9E297853DE0004EA69 /* SwipingScreen.swift in Sources */,
 				DD9FE60E296BE4FC00F06F07 /* BirthdayScreen.swift in Sources */,
 				C0316BB22752690900BBE3D9 /* SignUpScreen.swift in Sources */,
 			);
