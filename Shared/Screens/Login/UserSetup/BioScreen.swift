@@ -21,11 +21,11 @@ struct BioScreen: View {
     var body: some View {
             VStack{
                 
-                Text("Bio")
+                Text("Bio") //make buble get bigger
                     .font(.title)
                     .padding(30)
                 
-                TextField("Tell us abt urself", text: $bio ).onAppear(){
+                TextField("Tell us about yourself", text: $bio ).onAppear(){
                     self.bio = UserDefaults.standard.string(forKey: "bio")!
                 }
                     .padding(15)

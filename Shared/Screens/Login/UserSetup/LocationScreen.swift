@@ -20,7 +20,7 @@ struct LocationScreen: View {
     var body: some View {
             VStack{
                 
-                Text("location pls")
+                Text("What is Your Location") //let app access your location
                     .font(.title)
                     .padding(30)
                 

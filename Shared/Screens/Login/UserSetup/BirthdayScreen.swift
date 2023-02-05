@@ -20,7 +20,7 @@ struct BirthDayScreen: View {
     
     var body: some View {
             VStack{
-                Text("Birthday bum")
+                Text("Please Enter Your Birthdate")
                     .font(.title)
                     .padding(30)
                 VStack{

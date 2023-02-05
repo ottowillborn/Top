@@ -21,7 +21,7 @@ struct PhotosScreen: View {
     
     var body: some View {
             VStack{
-                Text("show me")
+                Text("Please Upload at least 4 Photos") //cannot access unless 4 photos are uploaded
                     .font(.title)
                     .padding(30)
                 HStack(spacing: 20){
