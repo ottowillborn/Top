@@ -23,7 +23,7 @@ struct NameScreen: View {
     var body: some View {
             VStack(spacing: 15){
                 
-                Text("Who the fuck are you")
+                Text("First Name")
                     .font(.title)
                     .padding(30)
                 

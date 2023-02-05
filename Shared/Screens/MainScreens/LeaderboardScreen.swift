@@ -13,7 +13,16 @@ struct LeaderboardsScreen: View {
     var body: some View {
 
             Text("Leaderboards")
+        HStack{
             
+            Button("Mens Leaderboard") {
+                MensScreen()
             }
+            Button("Womens Leaderboard") {
+                WomensScreen()
+            }
+            
+        }
+    }
            
 }

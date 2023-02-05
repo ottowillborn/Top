@@ -27,11 +27,11 @@ struct SignUpScreen: View {
                 Text("Register")
                     .font(.largeTitle)
                     .padding(.bottom, 20)
-                TextField("Email", text: $email )
+                TextField("Email", text: $email ) //confirmation code 
                     .padding(15)
                     .background(colors.lightGray)
                     .cornerRadius(10)
-                SecureField("Password", text: $password )
+                SecureField("Password", text: $password ) //more conditions
                     .padding(15)
                     .background(colors.lightGray)
                     .cornerRadius(10)

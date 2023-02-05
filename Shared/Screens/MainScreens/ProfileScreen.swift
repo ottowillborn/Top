@@ -16,28 +16,14 @@ import UIKit
 struct ProfileScreen: View {
     
     var body: some View {
-
-            Text("Profile")
-            }
-           
+        Text("Profile")
+    }
 }
 //
 //
 //var body: some View {
-//        VStack{
-//            Text("Home")
-//                .font(.title)
-//                .padding(10)
-//            Text(Auth.auth().currentUser?.email ?? "")
-//                .font(.title)
-//                .padding(30)
-//            if displayImage != nil {
-//                Image(uiImage: displayImage!)
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 300, height: 500, alignment: .topLeading)
-//                    .border(colors.orange)
-//            }
+//
+    
 //            PhotosPicker(
 //                selection: $selectedItem,
 //                matching: .images,
